@@ -105,7 +105,7 @@ const ReactFlowDemo = () => {
                 return applyNodeChanges(
                     changes.filter((change) => {
                         //   Prevent deletion of the start node
-                        if (change.type === 'remove' && change.id === 'start-node' || change.type === 'remove' && change.id === 'end-node') {
+                        if (change.type === 'remove' && change.id === 'start-node' ) {
                             console.log('prevented');
                             toast.error('You cannot delete the start or end node');
                             return false

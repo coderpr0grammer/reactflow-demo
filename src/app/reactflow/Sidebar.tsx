@@ -2,7 +2,7 @@
 import React from 'react';
 import { useDnD } from './DnDContext';
 import { Separator } from '@/components/ui/separator';
-import { PhoneCallIcon } from 'lucide-react';
+import { PhoneCallIcon, PhoneIncomingIcon } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Node, applyNodeChanges } from '@xyflow/react';
 import { v4 as uuidv4 } from 'uuid';
@@ -35,6 +35,17 @@ const Sidebar = ({ onAddNode }: { onAddNode: (node: allNodesType) => void }) => 
                 title: "New Default Node",
                 instructions: "Placeholder instructions for agent to say",
             }
+        },
+        {
+            id: uuidv4(),
+            position: { x: 50, y: 50 },
+            type: 'endNode',
+            icon: <PhoneIncomingIcon className='h-6 w-6' />,
+            data: {
+                userReadableType: 'Conversation End',
+                title: "End Phone Call",
+                instructions: "Placeholder instructions for agent to say",
+            }
         }
     ]
 
@@ -55,7 +66,7 @@ const Sidebar = ({ onAddNode }: { onAddNode: (node: allNodesType) => void }) => 
                     </div>
                     <Separator />
 
-                    <div className='p-2'>
+                    <div className='p-2 flex flex-col h-full gap-2'>
                         {allNodes.map((node) => (
                             <div key={node.type} onClick={() => onAddNode(node)} className="dndnode w-full relative text-muted-foreground border rounded-md p-4 hover:border hover:border-indigo-300 flex flex-col items-center justify-center cursor-pointer transition-all duration-200 hover:bg-muted"
                             // onDragStart={(event) => onDragStart(event, node.type)}
@@ -67,6 +78,7 @@ const Sidebar = ({ onAddNode }: { onAddNode: (node: allNodesType) => void }) => 
                             </div>
                         ))}
                     </div>
+
                 </div>
 
                 <div className='p-2 w-full'>
