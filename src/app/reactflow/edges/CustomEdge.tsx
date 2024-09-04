@@ -111,4 +111,6 @@ const CustomEdge: FC<CustomEdgeProps> = ({
   );
 };
 
+CustomEdge.displayName = "CustomEdge";
+
 export default CustomEdge;

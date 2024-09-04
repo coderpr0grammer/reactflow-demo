@@ -20,31 +20,6 @@ import { StartNodeType } from '@/app/types';
 const EndNode = ({ data, selected }: NodeProps<StartNodeType>) => {
 
 
-  const formSchema = z.object({
-    instructions: z.string()
-  })
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      instructions: "",
-    },
-  })
-
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
-  }
-
-  useEffect(() => {
-    const subscription = form.watch((value, { name, type }) => {
-      // When the form values change, submit the form
-      form.handleSubmit(onSubmit)();
-    });
-    return () => subscription.unsubscribe();
-  }, [form]);
 
   const { title, instructions } = data;
 
@@ -56,33 +31,14 @@ const EndNode = ({ data, selected }: NodeProps<StartNodeType>) => {
             <PhoneIncomingIcon className='h-[12px] w-[12px]' />
           </div>
           <CardTitle className='text-xs font-medium leading-5 !m-0'>{title || "End Phone Call"}</CardTitle>
-          {/* <CardDescription>{job}</CardDescription> */}
+         
         </CardHeader>
         <Separator />
         <CardContent className='p-2 '>
           <div className='p-3 hover:bg-accent focus-visible:bg-accent transition-all rounded-sm caret-indigo-500 h-full w-full resize-none border-none  text-xs font-normal focus-visible:ring-0 focus-visible:ring-offset-0'>
             {instructions}
           </div>
-          {/* <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
-              <FormField
-                control={form.control}
-                name="instructions"
-                render={({ field }) => (
-                  <FormItem>
-
-                    <FormControl>
-                      <Textarea className='p-6 h-full w-full resize-none border-none rounded-none text-xs font-normal focus-visible:ring-0 focus-visible:ring-offset-0' placeholder="Instructions" {...field} />
-
-                    </FormControl>
-
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-            </form>
-          </Form> */}
+          
         </CardContent>
 
       </Card>
@@ -101,4 +57,5 @@ const EndNode = ({ data, selected }: NodeProps<StartNodeType>) => {
   );
 }
 
+EndNode.displayName = "EndNode";
 export default memo(EndNode);

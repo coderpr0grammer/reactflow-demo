@@ -35,7 +35,7 @@ import { DnDProvider, useDnD } from './DnDContext';
 import EndNode from './nodes/EndNode';
 import { toast } from 'sonner';
 import DefaultNode from './nodes/DefaultNode';
-import CustomEdge from './edges/EdgeLabel';
+import CustomEdge from './edges/CustomEdge';
 import { useTheme } from 'next-themes';
 import { CustomEdgeData, CustomEdgeProps, DefaultNodeType, EditNodeModalRef } from '../types';
 import { v4 as uuidv4 } from 'uuid'
@@ -296,5 +296,7 @@ const ReactFlowDemo = () => {
         </div>
     );
 };
+
+ReactFlowDemo.displayName = "ReactFlowDemo";
 
 export default ReactFlowDemo;

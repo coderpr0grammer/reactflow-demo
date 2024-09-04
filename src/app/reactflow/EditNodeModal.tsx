@@ -141,4 +141,5 @@ const EditNodeModal = forwardRef<EditNodeModalRef, EditNodeModalProps>(
         )
     })
 
+EditNodeModal.displayName = "EditNodeModal"
 export default EditNodeModal

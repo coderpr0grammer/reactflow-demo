@@ -82,4 +82,6 @@ const Sidebar = ({ onAddNode }: { onAddNode: (node: allNodesType) => void }) => 
     );
 };
 
+Sidebar.displayName = "Sidebar";
+
 export default Sidebar;

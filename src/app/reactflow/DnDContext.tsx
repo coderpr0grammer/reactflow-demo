@@ -31,3 +31,6 @@ export const useDnD = (): DnDContextType => {
 
     return context;
 };
+
+
+DnDProvider.displayName = "DnDProvider"

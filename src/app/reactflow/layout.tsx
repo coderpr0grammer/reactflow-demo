@@ -19,4 +19,6 @@ const ReactFlowLayout: React.FC<ReactFlowLayoutProps> = ({ children }) => {
         </FlowContextProvider>
     )
 }
+
+ReactFlowLayout.displayName = "ReactFlowLayout"
 export default ReactFlowLayout
