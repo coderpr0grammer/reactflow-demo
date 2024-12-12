@@ -14,7 +14,7 @@ export type EditNodeModalProps = {
 // Define a custom type for the ref
 export type EditNodeModalRef = {
     open(node: Node): void;
-    close(): void;
+    closeModal(): void;
 };
 
 export type ReactFlowLayoutProps = {

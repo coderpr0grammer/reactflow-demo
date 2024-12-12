@@ -66,6 +66,11 @@ const EditNodeModal = forwardRef<EditNodeModalRef, EditNodeModalProps>(
             // console.log(values)
         }
 
+        const closeModal = () => {
+            setModalOpen(false)
+            setNode({} as Node<DefaultNodeData>)
+        }
+
 
         useImperativeHandle(ref, () => {
             return {
@@ -74,9 +79,8 @@ const EditNodeModal = forwardRef<EditNodeModalRef, EditNodeModalProps>(
                     setNode(node)
                     setModalOpen(true)
                 },
-                close() {
-                    setModalOpen(false)
-                    setNode({} as Node<DefaultNodeData>)
+                closeModal() {
+                    closeModal()
                 }
             };
         }, []);
@@ -129,7 +133,7 @@ const EditNodeModal = forwardRef<EditNodeModalRef, EditNodeModalProps>(
 
                             </div>
                             <AlertDialogFooter>
-                                <AlertDialogCancel type="button" onClick={close}>Cancel</AlertDialogCancel>
+                                <AlertDialogCancel type="button" onClick={closeModal}>Cancel</AlertDialogCancel>
                                 <AlertDialogAction type="submit" onClick={()=> handleSubmit(form.getValues())}>Save</AlertDialogAction>
                             </AlertDialogFooter>
                         </AlertDialogContent>
